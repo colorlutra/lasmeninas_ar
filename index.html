@@ -10,18 +10,21 @@
     </style>
   </head>
   <body>
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-      <!-- ✅ Hiroマーカーでトリガー -->
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;" vr-mode-ui="enabled: false">
+      
+      <!-- 画像の事前読み込み -->
+      <a-assets>
+        <img id="meninas" src="lasmeninas_transparent.png">
+      </a-assets>
+
+      <!-- HIROマーカーで表示 -->
       <a-marker preset="hiro">
-        <a-plane 
-          src="lasmeninas_transparent.png"
-          transparent="true"
-          alpha-test="0.5"
+        <a-entity 
+          geometry="primitive: plane; height: 2.0; width: 1.7"
+          material="src: #meninas; transparent: true; alphaTest: 0.5"
           rotation="-90 0 0"
-          width="1.7"
-          height="2.0"
-          position="0 0 0">
-        </a-plane>
+          position="0 0.1 0">
+        </a-entity>
       </a-marker>
 
       <a-entity camera></a-entity>
